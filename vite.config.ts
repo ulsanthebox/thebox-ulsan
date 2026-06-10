@@ -6,7 +6,7 @@ const rawPort = process.env.PORT;
 const port = rawPort ? Number(rawPort) : 3000;
 
 export default defineConfig({
-  base: "/",
+base: "/thebox-ulsan/",
   root: path.resolve(import.meta.dirname),
   publicDir: path.resolve(import.meta.dirname, "public"),
   build: {
