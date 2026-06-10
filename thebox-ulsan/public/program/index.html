@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE BOX 울산 — 프로그램 안내</title>
+  <meta name="description" content="THE BOX 울산 아카데미와 원어민 스터디 — 울산에서 어학연수급 영어 환경을 경험하세요.">
+  <link rel="icon" href="/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #ef4444;
+      --black: #111;
+      --bg: #FAFAF8;
+      --white: #fff;
+      --gray: #f8f9fa;
+      --muted: #888;
+      --border: #eaeaea;
+      --radius: 16px;
+      --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+      --font-en: 'Bebas Neue', sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Plus Jakarta Sans','Noto Sans KR',sans-serif;background:var(--bg);color:var(--black);overflow-x:hidden;line-height:1.6;}
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+
+    /* ALERT BANNER */
+    .alert-banner{background:#1d4ed8;padding:12px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .live-dot{width:9px;height:9px;border-radius:50%;background:#fbbf24;box-shadow:0 0 0 3px rgba(251,191,36,.3);animation:pulse 2s infinite;flex-shrink:0;}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(251,191,36,.3);}50%{box-shadow:0 0 0 7px rgba(251,191,36,.1);}}
+    .alert-banner span{color:#fff;font-size:14px;font-weight:600;}
+    .alert-cta{background:#fff;color:#1d4ed8;font-size:13px;font-weight:800;padding:6px 18px;border-radius:999px;margin-left:6px;transition:var(--transition);}
+    .alert-cta:hover{background:#dbeafe;}
+
+    /* TOPBAR MARQUEE */
+    .topbar{background:var(--red);padding:9px 0;overflow:hidden;white-space:nowrap;}
+    .topbar-track{display:inline-flex;animation:marquee 22s linear infinite;}
+    .topbar-track span{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;padding:0 24px;}
+    .topbar-track span.dot{color:rgba(255,255,255,.35);padding:0 4px;}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:var(--transition);}
+    .logo{font-family:var(--font-en);font-size:28px;letter-spacing:2px;display:flex;align-items:center;gap:8px;}
+    .logo .red{color:var(--red);}
+    .logo-badge{font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;background:var(--red);color:#fff;padding:2px 10px;border-radius:999px;}
+    .header-nav{display:flex;align-items:center;gap:8px;}
+    .header-link{font-size:14px;font-weight:700;color:#444;padding:7px 14px;border-radius:999px;transition:var(--transition);}
+    .header-link:hover{background:var(--gray);}
+    .header-cta{background:var(--red);color:#fff;font-size:14px;font-weight:700;padding:9px 22px;border-radius:999px;transition:var(--transition);}
+    .header-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(239,68,68,.4);}
+
+    /* LAYOUT */
+    .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+    section{padding:80px 0;}
+    .section-eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+    .section-headline{font-size:clamp(28px,4.5vw,48px);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px;}
+    .section-sub{font-size:16px;color:var(--muted);font-weight:500;max-width:640px;}
+    .section-divider{width:48px;height:3px;background:var(--red);border-radius:2px;margin:18px auto 0;}
+    .text-center{text-align:center;}
+
+    /* HERO */
+    .hero{background:radial-gradient(circle at center,#fff 0%,#f3f4f6 100%);padding:80px 0 60px;text-align:center;}
+    .hero-badge{display:inline-block;background:#111;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 18px;border-radius:999px;margin-bottom:24px;}
+    .hero h1{font-size:clamp(36px,6vw,64px);font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;}
+    .hero h1 .highlight{color:var(--red);}
+    .hero-sub{font-size:clamp(16px,2vw,20px);color:#555;margin-bottom:40px;}
+    .hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto;text-align:left;}
+    .hero-prog-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--border);}
+    .hero-prog-card img{width:100%;height:200px;object-fit:cover;}
+    .hero-prog-card-body{padding:24px;}
+    .tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px;}
+    .tag-academy{background:#fee2e2;color:var(--red);}
+    .tag-study{background:#e0e7ff;color:#4f46e5;}
+    .hero-prog-card-body h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+    .hero-prog-card-body p{font-size:14px;color:#666;line-height:1.6;}
+    .hero-btn-group{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .btn-primary{background:var(--red);color:#fff;font-weight:700;padding:14px 32px;border-radius:999px;font-size:15px;transition:var(--transition);display:inline-block;box-shadow:0 4px 16px rgba(239,68,68,.3);}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(239,68,68,.4);}
+    .btn-outline{background:#fff;color:var(--black);font-weight:700;padding:14px 32px;border-radius:999px;font-size:15px;transition:var(--transition);display:inline-block;border:1.5px solid var(--border);box-shadow:var(--shadow-sm);}
+    .btn-outline:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+    /* STATS BAR */
+    .stats{display:flex;justify-content:center;background:var(--black);flex-wrap:wrap;}
+    .stat-item{flex:1;min-width:160px;text-align:center;padding:28px 32px;border-right:1px solid rgba(255,255,255,.08);}
+    .stat-item:last-child{border-right:none;}
+    .stat-num{font-family:var(--font-en);font-size:40px;color:var(--red);letter-spacing:1px;line-height:1;font-weight:800;}
+    .stat-label{font-size:12px;color:rgba(255,255,255,.45);margin-top:6px;font-weight:600;letter-spacing:.5px;}
+
+    /* CHECKLIST */
+    .checklist{display:flex;flex-direction:column;gap:14px;margin:28px 0;max-width:700px;}
+    .check-item{display:flex;gap:10px;align-items:flex-start;background:#fff;border-radius:12px;padding:16px 20px;font-size:15px;color:#333;line-height:1.6;border:1px solid var(--border);}
+    .check-item-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+
+    /* SOLUTION DARK BOX */
+    .solution-box{background:linear-gradient(135deg,#0f0f1a 0%,#1e1b3a 100%);border-radius:24px;padding:48px 40px;text-align:center;margin-top:48px;max-width:800px;margin-left:auto;margin-right:auto;}
+    .solution-box .eyebrow-sm{color:rgba(255,255,255,.4);font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+    .solution-box h3{color:#fff;font-size:clamp(22px,4vw,34px);font-weight:900;margin-bottom:10px;}
+    .solution-box .sub{color:rgba(255,255,255,.5);font-size:15px;margin-bottom:32px;}
+    .sol-tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+    .sol-track{border-radius:20px;padding:28px 20px;}
+    .sol-track-a{background:rgba(165,180,252,.08);border:1px solid rgba(165,180,252,.25);}
+    .sol-track-s{background:rgba(110,231,183,.08);border:1px solid rgba(110,231,183,.25);}
+    .sol-track-icon{font-size:2.2rem;margin-bottom:12px;}
+    .sol-track-label{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+    .sol-track-a .sol-track-label{color:#a5b4fc;}
+    .sol-track-s .sol-track-label{color:#6ee7b7;}
+    .sol-track h4{color:#fff;font-size:16px;font-weight:800;margin-bottom:14px;}
+    .sol-track-points{display:flex;flex-direction:column;gap:6px;}
+    .sol-track-point{background:rgba(255,255,255,.06);border-radius:8px;padding:7px 10px;font-size:13px;color:rgba(255,255,255,.7);}
+    .sol-result{background:linear-gradient(90deg,rgba(165,180,252,.15),rgba(110,231,183,.15));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:14px;}
+    .sol-result-text h4{color:#fff;font-weight:800;font-size:15px;}
+    .sol-result-text p{color:rgba(255,255,255,.5);font-size:13px;}
+
+    /* ROUTE CARDS */
+    .route-section{background:linear-gradient(to bottom,#fff 0%,var(--gray) 100%);}
+    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:60px;}
+    .route-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:block;transition:var(--transition);}
+    .route-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+    .route-card img{width:100%;height:240px;object-fit:cover;}
+    .route-card-body{padding:30px;}
+    .route-card-body h3{font-size:24px;font-weight:900;margin-bottom:16px;}
+    .route-card-body p{color:#666;font-size:15px;line-height:1.6;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #f0f0f0;}
+    .route-card-body ul{list-style:none;margin-bottom:28px;}
+    .route-card-body ul li{position:relative;padding-left:20px;margin-bottom:10px;font-size:15px;color:#444;}
+    .route-card-body ul li::before{content:'✔';position:absolute;left:0;top:0;color:var(--red);font-weight:700;}
+    .route-card-body .link-arrow{color:var(--red);font-weight:700;font-size:15px;}
+
+    /* COMPARE */
+    .compare-infographic{display:flex;max-width:960px;margin:40px auto 0;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);}
+    .compare-col{flex:1;}
+    .compare-col-title{font-size:13px;font-weight:800;padding:16px 18px;text-align:center;}
+    .compare-rows{}
+    .compare-col--bad{background:#fff5f5;}
+    .compare-col--bad .compare-col-title{background:#fee2e2;color:#dc2626;}
+    .compare-col--bad2{background:#fffbeb;}
+    .compare-col--bad2 .compare-col-title{background:#fef3c7;color:#92400e;}
+    .compare-col--good{background:#f0f7ff;}
+    .compare-col--good .compare-col-title{background:#111;color:#fff;}
+    .compare-row{display:flex;align-items:flex-start;gap:8px;padding:12px 16px;border-top:1px solid rgba(0,0,0,.06);font-size:13px;line-height:1.5;}
+    .cr-icon{font-size:13px;flex-shrink:0;margin-top:2px;font-weight:900;}
+    .compare-col--bad .cr-icon{color:#dc2626;}
+    .compare-col--bad2 .cr-icon{color:#d97706;}
+    .compare-col--good .cr-icon{color:#16a34a;}
+    .compare-col--good .compare-row{font-weight:600;}
+
+    /* STRENGTH */
+    .strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:40px auto 0;}
+    .strength-card{background:#fff;border-radius:var(--radius);padding:28px 24px;border:1px solid var(--border);text-align:center;transition:var(--transition);}
+    .strength-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+    .s-icon{font-size:1.8rem;margin-bottom:12px;}
+    .strength-card h4{font-size:15px;font-weight:800;margin-bottom:6px;}
+    .strength-card p{font-size:13px;color:#666;line-height:1.55;}
+
+    /* PHOTO GRID */
+    .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .photo-grid img{width:100%;aspect-ratio:16/9;border-radius:var(--radius);object-fit:cover;}
+
+    /* REVIEWS */
+    .reviews-section{background:var(--gray);}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+    .review-card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:24px;}
+    .review-card .tag{background:#f3f4f6;color:#111;display:inline-block;font-size:13px;font-weight:800;padding:5px 12px;border-radius:999px;margin-bottom:12px;}
+    .review-card p{margin:0;color:#444;line-height:1.65;font-size:14px;}
+    .review-card .who{margin-top:14px;font-weight:700;color:#888;font-size:13px;}
+    .review-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:24px;}
+    .review-links a{border:1px solid var(--border);background:#fff;padding:10px 16px;border-radius:999px;font-weight:700;color:var(--black);font-size:14px;transition:var(--transition);}
+    .review-links a:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+
+    /* DARK CTA BOX */
+    .dark-cta-box{background:#111;border-radius:24px;padding:48px 40px;text-align:center;max-width:700px;margin:56px auto 0;}
+    .dark-cta-box .eyebrow-sm{color:#aaa;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+    .dark-cta-box h3{color:#fff;font-size:clamp(22px,3.5vw,30px);font-weight:900;margin-bottom:14px;line-height:1.3;}
+    .dark-cta-box p{color:rgba(255,255,255,.6);font-size:15px;line-height:1.7;margin-bottom:28px;}
+    .dark-cta-box a{background:var(--red);color:#fff;font-weight:700;padding:16px 36px;border-radius:14px;font-size:16px;display:inline-block;transition:var(--transition);}
+    .dark-cta-box a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(239,68,68,.4);}
+
+    /* QUIZ */
+    .quiz-section{background:var(--gray);}
+    .quiz-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1000px;margin:0 auto;}
+    .quiz-card{background:#fff;border-radius:20px;padding:24px;border:2px solid var(--border);transition:var(--transition);}
+    .quiz-card.answered{border-color:#d1fae5;background:#f0fdf4;}
+    .quiz-card.answered .q-num{background:#22c55e;color:#fff;}
+    .q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#f3f4f6;color:#888;font-size:12px;font-weight:800;margin-bottom:10px;transition:var(--transition);}
+    .q-text{font-size:14px;font-weight:700;margin-bottom:14px;line-height:1.5;color:var(--black);}
+    .toggle-group{display:flex;flex-direction:column;gap:7px;}
+    .toggle__btn{background:#f8f8f8;border:1.5px solid #e5e7eb;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;text-align:left;cursor:pointer;transition:var(--transition);font-family:inherit;line-height:1.4;}
+    .toggle__btn:hover{border-color:var(--red);background:#fff5f5;}
+    .toggle__btn.is-selected{border-color:var(--red);background:#fff5f5;color:var(--red);font-weight:700;}
+    .quiz-submit-wrap{max-width:1000px;margin:20px auto 0;text-align:center;}
+    .quiz-counter{font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:600;}
+    .quiz-submit{background:#ccc;color:#fff;font-weight:800;padding:16px 48px;border-radius:14px;font-size:16px;border:none;font-family:inherit;cursor:not-allowed;transition:var(--transition);}
+    .quiz-submit.ready{background:var(--red);cursor:pointer;}
+    .quiz-submit.ready:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(239,68,68,.4);}
+    .result-box{display:none;max-width:1000px;margin:24px auto 0;border:2px solid var(--border);border-radius:20px;padding:32px;background:#fff;}
+    .result-box.show{display:block;}
+    .result__title{font-size:22px;font-weight:900;margin-bottom:10px;}
+    .result__desc{font-size:15px;color:#555;margin-bottom:20px;line-height:1.6;}
+    .result__pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+    .result__pill{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#f3f4f6;border:1px solid #e5e7eb;font-weight:700;font-size:13px;}
+    .result__btn{background:var(--red);color:#fff;font-weight:700;padding:14px 28px;border-radius:12px;font-size:15px;border:none;font-family:inherit;width:100%;text-align:center;cursor:pointer;transition:var(--transition);}
+    .result__btn:hover{opacity:.9;}
+    @media(max-width:700px){.quiz-grid{grid-template-columns:1fr;}}
+
+    /* RED CTA */
+    .cta-section{background:var(--red);padding:100px 0;text-align:center;}
+    .cta-section h2{color:#fff;font-size:clamp(28px,5vw,48px);font-weight:900;margin-bottom:16px;}
+    .cta-section p{color:rgba(255,255,255,.85);font-size:17px;margin-bottom:36px;}
+    .cta-btn-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn-white{background:#fff;color:var(--red);font-weight:800;padding:16px 36px;border-radius:14px;font-size:16px;transition:var(--transition);display:inline-block;}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,255,255,.3);}
+    .btn-ghost{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:800;padding:16px 36px;border-radius:14px;font-size:16px;transition:var(--transition);display:inline-block;}
+    .btn-ghost:hover{transform:translateY(-2px);}
+
+    /* FOOTER */
+    footer{background:#111;padding:48px 0;color:#aaa;}
+    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+    .footer-brand{font-family:var(--font-en);font-size:22px;color:#fff;letter-spacing:.04em;}
+    .footer-brand span{color:var(--red);}
+    .footer-nav{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+    .footer-nav a{color:#aaa;font-size:13px;transition:var(--transition);}
+    .footer-nav a:hover{color:var(--red);}
+    .footer-info{font-size:12px;color:#555;}
+
+    /* STICKY CTA */
+    .sticky-cta{position:fixed;right:18px;bottom:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transition:var(--transition);}
+    .sticky-cta.show{opacity:1;pointer-events:all;}
+    .sticky-cta a{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:50px;font-weight:700;font-size:14px;box-shadow:var(--shadow-md);text-decoration:none;white-space:nowrap;transition:var(--transition);}
+    .sticky-cta a:hover{transform:translateY(-2px);}
+    .cta-book{background:var(--red);color:#fff;}
+    .cta-test{background:#fff;color:var(--black);border:1px solid rgba(0,0,0,.08);}
+
+    /* UNDERLINE HIGHLIGHT */
+    .underline-hl{position:relative;display:inline;background:linear-gradient(to bottom,transparent 45%,#FFE066 45%,#FFE066 90%,transparent 90%);padding:0 2px;}
+
+    /* FADE */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-cards,.sol-tracks,.card-grid,.photo-grid{grid-template-columns:1fr;}
+      .compare-infographic{flex-direction:column;border-radius:16px;}
+      .strength-grid{grid-template-columns:1fr 1fr;}
+      .review-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:600px){
+      header{padding:0 20px;}
+      .header-link{display:none;}
+      .strength-grid,.review-grid{grid-template-columns:1fr;}
+      .solution-box{padding:28px 20px;}
+      .quiz-container{padding:24px 16px;}
+      .dark-cta-box{padding:32px 20px;}
+      .sticky-cta{left:12px;right:12px;bottom:12px;flex-direction:row;}
+      .sticky-cta a{flex:1;padding:14px 12px;border-radius:16px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert-banner">
+  <span class="live-dot"></span>
+  <span>📋 아카데미 · 스터디 정원 안내</span>
+  <span style="color:rgba(255,255,255,.5)">|</span>
+  <span>정원 마감 시, <strong>등록 순으로 자리를 안내</strong> 드립니다</span>
+  <a href="/consultation/" class="alert-cta">자리 확인하기</a>
+</div>
+
+<!-- TOPBAR MARQUEE -->
+<div class="topbar">
+  <div class="topbar-track">
+    <span>THE BOX 울산</span><span class="dot">·</span>
+    <span>ACADEMY</span><span class="dot">·</span>
+    <span>NATIVE STUDY</span><span class="dot">·</span>
+    <span>울산 영어회화 커뮤니티</span><span class="dot">·</span>
+    <span>THE BOX 울산</span><span class="dot">·</span>
+    <span>ACADEMY</span><span class="dot">·</span>
+    <span>NATIVE STUDY</span><span class="dot">·</span>
+    <span>울산 영어회화 커뮤니티</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="/" class="logo">THE <span class="red">BOX</span> <span class="logo-badge">울산</span></a>
+  <div class="header-nav">
+    <a href="/" class="header-link">← 메인으로</a>
+    <a href="https://www.instagram.com/thebox_ulsan/" target="_blank" rel="noopener" class="header-link">📷 인스타그램</a>
+    <a href="/consultation/" class="header-cta">상담 예약</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge reveal">Ulsan English Community</div>
+    <h1 class="reveal">영어가<br>'학습'이 아니라 <span class="highlight">'생활'</span>이 되는 곳</h1>
+    <p class="hero-sub reveal">해외 어학연수의 환경을 그대로 옮겨왔습니다.<br>체계적인 <strong>교정(Input)</strong>과 실전 <strong>대화(Output)</strong>가 동시에 일어납니다.</p>
+    <div style="text-align:center;margin-bottom:12px;width:100%">
+      <span style="display:inline-block;background:#111;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;padding:5px 18px;border-radius:999px;text-transform:uppercase;">THE BOX 2가지 시스템</span>
+    </div>
+    <div class="hero-cards reveal">
+      <div class="hero-prog-card">
+        <img src="/program/academy_class.JPG" alt="아카데미 수업">
+        <div class="hero-prog-card-body">
+          <span class="tag tag-academy">더박스 아카데미</span>
+          <h3>TheBox Academy</h3>
+          <p>"말이 입 밖으로 안 나온다면"<br>영어 회로 만들기 + 피드백</p>
+        </div>
+      </div>
+      <div class="hero-prog-card">
+        <img src="/program/native_study.JPG" alt="원어민 스터디">
+        <div class="hero-prog-card-body">
+          <span class="tag tag-study">원어민 회화스터디</span>
+          <h3>English Free-Talking</h3>
+          <p>"영어는 좀 하는데, 외국인만 보면 얼어붙는다면"<br>원어민 친구들과 실전 회화</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-btn-group reveal">
+      <a href="#diagnosis" class="btn-primary">30초 진단으로 내 시스템 찾기 ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num"><span class="counter" data-target="200">0</span>+</div>
+    <div class="stat-label">네이버 방문자 리뷰</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span class="counter" data-target="800">0</span>+</div>
+    <div class="stat-label">누적 수강생</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span class="counter" data-target="95">0</span>%</div>
+    <div class="stat-label">수강 만족도</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section style="background:#fff;padding:80px 0;">
+  <div class="container">
+    <h2 class="section-headline reveal"><span class="underline-hl">10년을 공부</span>했는데,<br>왜 외국인 앞에선 작아질까요?</h2>
+    <div class="checklist">
+      <div class="check-item reveal">
+        <div class="check-item-icon">🧠</div>
+        <div><strong>과잉 이론:</strong> 문법 문제는 푸는데, "어제 뭐 했어?", "배 안 고파?"는 3초 안에 안 나온다.</div>
+      </div>
+      <div class="check-item reveal">
+        <div class="check-item-icon">😶</div>
+        <div><strong>입력 부재:</strong> 머릿속 한국어를 영어로 번역하느라 대화 타이밍을 놓친다.</div>
+      </div>
+      <div class="check-item reveal">
+        <div class="check-item-icon">😰</div>
+        <div><strong>심리적 장벽:</strong> "틀리면 어떡하지?"라는 불안감이 내 입을 막는다.</div>
+      </div>
+    </div>
+    <p class="reveal" style="font-size:18px;font-weight:800;margin-top:8px;">이건 능력 부족이 아닙니다.<br><strong style="background:#FFE066;color:#111;padding:0 4px;border-radius:3px;">제대로 된 회화 훈련을 받지 못했기 때문</strong>입니다.</p>
+    <div class="solution-box reveal">
+      <p class="eyebrow-sm">THE BOX SOLUTION</p>
+      <h3><span style="border-bottom:4px solid #FFE066;padding-bottom:3px;">더박스</span>에서 해결됩니다.</h3>
+      <p class="sub">나에게 맞는 시스템을 충분히 활용하면, 영어가 생활이 됩니다.</p>
+      <div class="sol-tracks">
+        <div class="sol-track sol-track-a">
+          <div class="sol-track-icon">📘</div>
+          <div class="sol-track-label">ACADEMY</div>
+          <h4>영어 회로 만들기</h4>
+          <div class="sol-track-points">
+            <div class="sol-track-point">✓ 문장 구조 완성</div>
+            <div class="sol-track-point">✓ 반복 실수 교정</div>
+            <div class="sol-track-point">✓ 숙제→피드백 루프</div>
+          </div>
+        </div>
+        <div class="sol-track sol-track-s">
+          <div class="sol-track-icon">🗣️</div>
+          <div class="sol-track-label">NATIVE STUDY</div>
+          <h4>실전 감각 키우기</h4>
+          <div class="sol-track-points">
+            <div class="sol-track-point">✓ 원어민과 90분 대화</div>
+            <div class="sol-track-point">✓ 자연스러운 교정</div>
+            <div class="sol-track-point">✓ 자신감 완성</div>
+          </div>
+        </div>
+      </div>
+      <div class="sol-result">
+        <span style="font-size:1.5rem">🇬🇧</span>
+        <div class="sol-result-text">
+          <h4>영어가 생활이 된다</h4>
+          <p>말이 막히지 않고, 외국인 앞에서 자연스럽게</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND YOUR ROUTE -->
+<section class="route-section">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px;">
+      <span class="section-eyebrow">FIND YOUR ROUTE</span>
+      <h2 class="section-headline">나에게 맞는 시스템을 찾으세요</h2>
+      <p class="section-sub" style="margin:0 auto;">아카데미와 스터디, 지금 내 상황에 맞는 시스템이 따로 있습니다.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="card-grid">
+      <a class="route-card reveal" href="/consultation/">
+        <img src="/native_study/conversation.jpg" alt="원어민 스터디">
+        <div class="route-card-body">
+          <span class="tag tag-study">원어민 회화스터디</span>
+          <h3>English Free-Talking</h3>
+          <p>새로 배운 패턴과 표현을 내뱉어 보는 건 중요하죠. 더박스 안에서 원어민들과 직접 소통하며 나의 언어로 녹아들게 하세요.</p>
+          <ul>
+            <li>원어민과 이야기하고 싶어요</li>
+            <li>프리토킹이 하고 싶어요</li>
+            <li>영어 실력을 유지하고 싶어요</li>
+          </ul>
+          <span class="link-arrow">자세히 보기 →</span>
+        </div>
+      </a>
+      <a class="route-card reveal" href="/consultation/">
+        <img src="/academy/class_scene.jpg" alt="아카데미 수업">
+        <div class="route-card-body">
+          <span class="tag tag-academy">더박스 아카데미</span>
+          <h3>TheBox Academy</h3>
+          <p>같은 기초 영어라도 더박스는 다릅니다. 더박스의 기초 수업은 소통을 시작하는 단계입니다.</p>
+          <ul>
+            <li>영어회화가 처음이에요</li>
+            <li>말하는 방법을 모르겠어요</li>
+            <li>더 풍부한 회화를 하고 싶어요</li>
+          </ul>
+          <span class="link-arrow">자세히 보기 →</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="text-center reveal" style="margin-top:60px;">
+      <span class="section-eyebrow">WHY THE BOX</span>
+      <h2 class="section-headline">다른 곳과 뭐가 다른가요?</h2>
+      <p class="section-sub" style="margin:0 auto;">같은 시간을 쓸 거라면, 환경이 달라야 결과도 달라집니다.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="compare-infographic reveal">
+      <div class="compare-col compare-col--bad">
+        <div class="compare-col-title">😰 일반 영어 모임</div>
+        <div class="compare-rows">
+          <div class="compare-row"><span class="cr-icon">✕</span><span>비영어권 운영자 — 교정 불가</span></div>
+          <div class="compare-row"><span class="cr-icon">✕</span><span>틀린 표현이 그대로 굳어짐</span></div>
+          <div class="compare-row"><span class="cr-icon">✕</span><span>대화량은 많지만 콩글리쉬 그대로</span></div>
+          <div class="compare-row"><span class="cr-icon">✕</span><span>체계적 피드백 전혀 없음</span></div>
+          <div class="compare-row"><span class="cr-icon">✕</span><span>실력 정체 — 6개월이 1개월보다 못한 경우도</span></div>
+        </div>
+      </div>
+      <div class="compare-col compare-col--bad2">
+        <div class="compare-col-title">📚 대형 학원</div>
+        <div class="compare-rows">
+          <div class="compare-row"><span class="cr-icon">△</span><span>정형화된 교재 위주 수업</span></div>
+          <div class="compare-row"><span class="cr-icon">△</span><span>개인 약점보다 커리큘럼 우선</span></div>
+          <div class="compare-row"><span class="cr-icon">△</span><span>말하기 연습 시간 절대 부족</span></div>
+          <div class="compare-row"><span class="cr-icon">△</span><span>"늘긴 했는데 아직도 막혀"</span></div>
+          <div class="compare-row"><span class="cr-icon">△</span><span>교실 밖은 다시 한국어 환경</span></div>
+        </div>
+      </div>
+      <div class="compare-col compare-col--good">
+        <div class="compare-col-title">★ THE BOX 울산</div>
+        <div class="compare-rows">
+          <div class="compare-row"><span class="cr-icon">✓</span><span>영어권 원어민과 비율 맞춘 환경</span></div>
+          <div class="compare-row"><span class="cr-icon">✓</span><span>실시간 자연스러운 교정 + 확장</span></div>
+          <div class="compare-row"><span class="cr-icon">✓</span><span>소수정예 스터디 → 발언 기회 극대화</span></div>
+          <div class="compare-row"><span class="cr-icon">✓</span><strong style="color:#6ee7b7">[STUDY]</strong> <span>파티·아웃팅 영어 라이프스타일</span></div>
+          <div class="compare-row"><span class="cr-icon">✓</span><strong style="color:#a5b4fc">[ACADEMY]</strong> <span>번역 없이 바로 영어로 말하기 훈련</span></div>
+          <div class="compare-row"><span class="cr-icon">✓</span><strong style="color:#a5b4fc">[ACADEMY]</strong> <span>숙제→피드백으로 반복 실수 소거</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRENGTH -->
+    <div class="strength-grid">
+      <div class="strength-card reveal">
+        <div class="s-icon">🎯</div>
+        <h4>소수정예 스터디</h4>
+        <p>원어민 1명당 한국인 3~6명<br>발언 기회 극대화</p>
+      </div>
+      <div class="strength-card reveal">
+        <div class="s-icon">📝</div>
+        <h4>개인별 교정 시스템</h4>
+        <p>4~10명 소그룹 아카데미<br>내 약점만 정확히 교정</p>
+      </div>
+      <div class="strength-card reveal">
+        <div class="s-icon">🗣️</div>
+        <h4>검증된 영어권 원어민</h4>
+        <p>미국·영국·캐나다·호주<br>진짜 영어권 환경</p>
+      </div>
+      <div class="strength-card reveal">
+        <div class="s-icon">🔄</div>
+        <h4>숙제→피드백 루프</h4>
+        <p>반복 실수가 사라지는<br>아카데미 시스템</p>
+      </div>
+      <div class="strength-card reveal">
+        <div class="s-icon">💬</div>
+        <h4>90분 실전 대화</h4>
+        <p>원어민과 매 세션<br>자연스러운 표현 확장</p>
+      </div>
+      <div class="strength-card reveal">
+        <div class="s-icon">🎉</div>
+        <h4>영어 라이프스타일</h4>
+        <p>파티·아웃팅·네트워킹<br>진짜 쓰는 영어 환경</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<section style="background:#fff;padding:60px 0;">
+  <div class="container">
+    <div class="photo-grid">
+      <img src="/events/party_networking.jpeg" alt="더박스 파티" class="reveal">
+      <img src="/events/outing_event.jpeg" alt="아웃팅 이벤트" class="reveal">
+      <img src="/events/study.jpg" alt="스터디 현장" class="reveal">
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px;">
+      <span class="section-eyebrow">REAL REVIEWS</span>
+      <h2 class="section-headline">실제 멤버 후기</h2>
+      <p class="section-sub" style="margin:0 auto;">멤버들의 이야기 — 과장 없이 직접 들어보세요.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <span class="tag">아카데미 2개월</span>
+        <p>"문법은 아는데 입에서 안 나왔어요. 아카데미에서 문장 구조 훈련하고 나니까 스터디에서 자신감 생겼어요!"</p>
+        <div class="who">— 직장인 K님</div>
+      </div>
+      <div class="review-card reveal">
+        <span class="tag">스터디 6개월</span>
+        <p>"처음엔 외국인만 보면 입이 안 떨어졌는데, 지금은 친구들이랑 영어로 농담까지 나눠요. 진짜 말이 트였어요."</p>
+        <div class="who">— 대학생 L님</div>
+      </div>
+      <div class="review-card reveal">
+        <span class="tag">아카데미+스터디</span>
+        <p>"시제, 전치사 실수가 계속 반복됐는데 아카데미에서 완전히 잡았어요. 스터디에서 바로 써먹으니까 더 빠르게 느는 거 같아요."</p>
+        <div class="who">— 프리랜서 M님</div>
+      </div>
+      <div class="review-card reveal">
+        <span class="tag">다른 스터디 6개월 → 아카데미 2개월</span>
+        <p>"다른 학원형 모임에서 6개월 다녔는데 틀린 표현 교정도 안 되고 정체됐어요. THE BOX 아카데미 2달 다니니까 6개월보다 더 많이 배웠어요!"</p>
+        <div class="who">— 취준생 J님</div>
+      </div>
+      <div class="review-card reveal">
+        <span class="tag">아카데미 3개월</span>
+        <p>"예전엔 '좋아한다'를 무조건 'like'만 썼는데, 이제는 'I'm into~', 'I'm a big fan of~' 같은 자연스러운 표현들이 바로 나와요!"</p>
+        <div class="who">— 워홀준비생 S님</div>
+      </div>
+      <div class="review-card reveal">
+        <span class="tag">스터디 1년</span>
+        <p>"파티, 아웃팅까지 영어로 생활하다 보니 영어가 공부가 아니라 일상이 됐어요. 외국인 친구도 생기고, 라이프스타일이 바뀌었습니다."</p>
+        <div class="who">— 직장인 H님</div>
+      </div>
+    </div>
+    <div class="review-links reveal">
+      <a href="https://www.instagram.com/thebox_ulsan/" target="_blank" rel="noopener">📸 인스타그램 후기</a>
+      <a href="https://naver.me/xRh9Gx7w" target="_blank" rel="noopener">⭐ 네이버 예약 후기</a>
+    </div>
+
+    <!-- DARK CTA BOX -->
+    <div class="dark-cta-box reveal">
+      <p class="eyebrow-sm">START YOUR JOURNEY</p>
+      <h3>영어, 언제부터<br>시작하려고 하셨나요?</h3>
+      <p>여기 오신 분들 대부분, 그 질문을 몇 년째 하고 있었습니다.<br>그 사이 먼저 시작한 분들은 이미 달라졌어요.</p>
+      <a href="/consultation/">⚡ 지금 무료 상담 예약하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- 30초 진단 -->
+<section class="quiz-section" id="diagnosis">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:40px;">
+      <span class="section-eyebrow">LEVEL DIAGNOSIS</span>
+      <h2 class="section-headline">30초 진단으로<br>내 최적 시스템을 찾아보세요</h2>
+      <p class="section-sub" style="margin:0 auto;">8개 질문으로 아카데미와 스터디 중 어떤 시스템이 맞는지 바로 확인할 수 있습니다.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="quiz-grid">
+      <div class="quiz-card" data-map="L">
+        <div class="q-num">1</div>
+        <p class="q-text">영어로 간단한 자기소개(이름, 직업, 취미)를 할 수 있나요?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="beginner">아니요, 단어만 나열하는 수준</button>
+          <button class="toggle__btn" data-answer="intermediate">네, 문장으로 말할 수 있어요</button>
+          <button class="toggle__btn" data-answer="advanced">네, 유창하게 말할 수 있어요</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="A">
+        <div class="q-num">2</div>
+        <p class="q-text">영어로 된 글을 보면?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="yes">단어를 하나씩 찾아봐야 한다</button>
+          <button class="toggle__btn" data-answer="no">대충 의미는 파악할 수 있다</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="A" data-weight="2">
+        <div class="q-num">3</div>
+        <p class="q-text">"I'm so boring today."가 틀린 이유를 아시나요?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="yes">잘 모르겠어요</button>
+          <button class="toggle__btn" data-answer="no">boring이 아니라 bored를 써야죠!</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="S">
+        <div class="q-num">4</div>
+        <p class="q-text">원어민이 빠르게 말하면?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="yes">반 이상 알아들을 수 있다</button>
+          <button class="toggle__btn" data-answer="no">아는 단어나 문맥은 드문드문 들린다</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="A">
+        <div class="q-num">5</div>
+        <p class="q-text">"어제 뭐 했어?"라고 물으면?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="yes">머릿속으로 한글을 영어로 번역하고 있다</button>
+          <button class="toggle__btn" data-answer="no">바로 영어가 튀어나온다 (완벽하진 않아도)</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="S">
+        <div class="q-num">6</div>
+        <p class="q-text">말할 때 문법 틀리는 게 걱정되나요?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="yes">네, 그래서 말이 멈춰요</button>
+          <button class="toggle__btn" data-answer="no">아니요, 일단 바디랭귀지라도 씁니다</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="S" data-weight="2">
+        <div class="q-num">7</div>
+        <p class="q-text">영어로 10분 이상 대화해본 적이 있나요?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="yes">네, 여행이나 친구랑 해봤어요</button>
+          <button class="toggle__btn" data-answer="no">아니요, 거의 없습니다</button>
+        </div>
+      </div>
+      <div class="quiz-card" data-map="M">
+        <div class="q-num">8</div>
+        <p class="q-text">지금 가장 해결하고 싶은 것은?</p>
+        <div class="toggle-group">
+          <button class="toggle__btn" data-answer="grammar">정확한 문장으로 말하고 싶어요</button>
+          <button class="toggle__btn" data-answer="speaking">외국인 앞에서 쫄지 않고 말하고 싶어요</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-submit-wrap">
+      <p class="quiz-counter" id="quizCounter">0 / 8 답변됨</p>
+      <button class="quiz-submit" id="quizSubmit" disabled>결과 보기 →</button>
+    </div>
+
+    <div class="result-box" id="quizResult">
+      <h3 class="result__title"></h3>
+      <p class="result__desc"></p>
+      <div class="result__pills" id="resultPills"></div>
+      <button class="result__btn" onclick="window.location.href='/consultation/'">결과에 맞는 상담 예약하기 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- RED CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="reveal">지금 바로 시작하세요</h2>
+    <p class="reveal">울산에서 가장 확실한 영어 환경.<br>합리적인 멤버십으로, 어학연수의 효과를 직접 경험해보세요.</p>
+    <div class="cta-btn-group reveal">
+      <a href="/consultation/" class="btn-white">📝 무료 상담 예약하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">THE <span>BOX</span></div>
+      <div class="footer-nav">
+        <a href="/">홈</a>
+        <a href="/program/">프로그램</a>
+        <a href="/consultation/">상담 예약</a>
+        <a href="https://www.instagram.com/thebox_ulsan/" target="_blank" rel="noopener">인스타그램</a>
+        <a href="https://naver.me/xRh9Gx7w" target="_blank" rel="noopener">네이버</a>
+      </div>
+      <div class="footer-info">울산 남구 돋질로306번길 10-1 3층 | THE BOX Ulsan English Community</div>
+      <div class="footer-info">© 2025 THE BOX 울산. All rights reserved.</div>
+      <div style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.25);line-height:1.7;max-width:600px;margin-left:auto;margin-right:auto;">
+        더박스 스터디는 강의식 수업이 아닌 영어회화 커뮤니티입니다. 외국인 멤버는 강사 또는 선생님이 아닌 일반 멤버로 참여하며, 모든 활동은 자유로운 대화와 교류를 목적으로 합니다.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="/consultation/" class="cta-book">⚡ 지금 예약하기</a>
+  <a href="#diagnosis" class="cta-test">📝 레벨 진단</a>
+</div>
+
+<script>
+  /* SCROLL */
+  const header = document.getElementById('header');
+  const stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    header.style.boxShadow = s > 50 ? '0 2px 20px rgba(0,0,0,0.08)' : '';
+    stickyCta.classList.toggle('show', s > 300);
+  });
+
+  /* REVEAL */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    revealObs.observe(el);
+  });
+
+  /* COUNTER */
+  function animateCounter(el) {
+    if (el.dataset.animated) return;
+    el.dataset.animated = '1';
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  const statsObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.counter').forEach(animateCounter);
+      statsObs.disconnect();
+    }
+  }, { threshold: 0.3 });
+  const statsEl = document.querySelector('.stats');
+  if (statsEl) statsObs.observe(statsEl);
+
+  /* QUIZ — all-at-once grid */
+  const cards = document.querySelectorAll('.quiz-card');
+  const counter = document.getElementById('quizCounter');
+  const submitBtn = document.getElementById('quizSubmit');
+  const resultBox = document.getElementById('quizResult');
+  const resultPills = document.getElementById('resultPills');
+  const TOTAL = cards.length;
+  let answered = 0;
+
+  cards.forEach(card => {
+    card.querySelectorAll('.toggle__btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wasAnswered = card.classList.contains('answered');
+        card.querySelectorAll('.toggle__btn').forEach(b => b.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        if (!wasAnswered) {
+          card.classList.add('answered');
+          answered++;
+          counter.textContent = answered + ' / ' + TOTAL + ' 답변됨';
+          if (answered === TOTAL) {
+            submitBtn.classList.add('ready');
+            submitBtn.disabled = false;
+            submitBtn.textContent = '결과 보기 →';
+          }
+        }
+      });
+    });
+  });
+
+  submitBtn.addEventListener('click', () => {
+    if (!submitBtn.classList.contains('ready')) return;
+    let scoreA = 0, scoreS = 0;
+    cards.forEach(card => {
+      const selected = card.querySelector('.toggle__btn.is-selected');
+      if (!selected) return;
+      const map = card.dataset.map;
+      const weight = parseInt(card.dataset.weight || 1);
+      const answer = selected.dataset.answer;
+      if (map === 'A' && (answer === 'yes' || answer === 'beginner' || answer === 'grammar')) scoreA += weight;
+      if (map === 'S' && (answer === 'yes' || answer === 'speaking')) scoreS += weight;
+    });
+    let title, desc, pills;
+    if (scoreA >= scoreS) {
+      title = '📘 아카데미가 먼저입니다';
+      desc = '영어 회로가 아직 만들어지지 않았어요. 아카데미에서 문장 구조와 표현 패턴을 먼저 잡아야 스터디에서도 자신감 있게 말할 수 있어요.';
+      pills = ['<span class="result__pill">✓ 문장 구조 교정</span>', '<span class="result__pill">✓ 패턴 반복 훈련</span>', '<span class="result__pill">✓ 숙제→피드백 루프</span>'];
+    } else {
+      title = '🗣️ 원어민 스터디가 맞아요';
+      desc = '기본기는 충분해요! 이제 원어민 앞에서 실전 감각을 키울 차례예요. 스터디에서 자연스럽게 대화하며 자신감을 완성하세요.';
+      pills = ['<span class="result__pill">✓ 영어권 원어민 대화</span>', '<span class="result__pill">✓ 실전 발화 훈련</span>', '<span class="result__pill">✓ 파티·아웃팅 커뮤니티</span>'];
+    }
+    document.querySelector('#quizResult .result__title').textContent = title;
+    document.querySelector('#quizResult .result__desc').textContent = desc;
+    resultPills.innerHTML = pills.join('');
+    resultBox.classList.add('show');
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>
